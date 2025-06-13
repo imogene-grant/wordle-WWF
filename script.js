@@ -98,7 +98,7 @@ function showCustomMessage(message) {
   const msg = document.createElement("div");
   msg.innerText = message;
   msg.style.position = "fixed";
-  msg.style.bottom = "20px";
+  msg.style.top = "20%"; // changed from bottom to top
   msg.style.left = "50%";
   msg.style.transform = "translateX(-50%)";
   msg.style.background = "#007932";
@@ -109,6 +109,7 @@ function showCustomMessage(message) {
   msg.style.zIndex = "10000";
   msg.style.opacity = "0";
   msg.style.transition = "opacity 0.3s ease";
+  msg.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.2)";
   document.body.appendChild(msg);
   requestAnimationFrame(() => {
     msg.style.opacity = "1";
@@ -117,4 +118,6 @@ function showCustomMessage(message) {
     msg.style.opacity = "0";
     setTimeout(() => msg.remove(), 500);
   }, 2500);
+}
+
 }
