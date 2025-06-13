@@ -56,11 +56,17 @@ function checkAnswers() {
     }
   });
 
-  if (currentInput.join("") === currentWord) {
-    alert("Correct!");
+  const guessedWord = currentInput.join("");
+
+  if (guessedWord === currentWord) {
     won = true;
+    setTimeout(() => {
+      showCustomMessage("✅ Correct! Great job.");
+    }, 200);
   } else if (currentLine === 6) {
-    alert(`The correct answer was "${currentWord.toUpperCase()}"`);
+    setTimeout(() => {
+      showCustomMessage(`The word was "${currentWord.toUpperCase()}"`);
+    }, 200);
   }
 }
 
@@ -76,7 +82,7 @@ function handleKey(key) {
       currentInput = [];
       updateUI();
     } else {
-      alert("Your word is not long enough!");
+      showCustomMessage("Your word is not long enough!");
     }
   } else if (/^[a-zA-Z]$/.test(key) && currentInput.length < 5) {
     currentInput.push(key.toLowerCase());
@@ -87,3 +93,28 @@ function handleKey(key) {
 window.addEventListener("keydown", (e) => {
   handleKey(e.key);
 });
+
+function showCustomMessage(message) {
+  const msg = document.createElement("div");
+  msg.innerText = message;
+  msg.style.position = "fixed";
+  msg.style.bottom = "20px";
+  msg.style.left = "50%";
+  msg.style.transform = "translateX(-50%)";
+  msg.style.background = "#007932";
+  msg.style.color = "white";
+  msg.style.padding = "12px 24px";
+  msg.style.borderRadius = "6px";
+  msg.style.fontSize = "1rem";
+  msg.style.zIndex = "10000";
+  msg.style.opacity = "0";
+  msg.style.transition = "opacity 0.3s ease";
+  document.body.appendChild(msg);
+  requestAnimationFrame(() => {
+    msg.style.opacity = "1";
+  });
+  setTimeout(() => {
+    msg.style.opacity = "0";
+    setTimeout(() => msg.remove(), 500);
+  }, 2500);
+}
