@@ -98,7 +98,7 @@ function showCustomMessage(message) {
   const msg = document.createElement("div");
   msg.innerText = message;
   msg.style.position = "fixed";
-  msg.style.top = "20%"; // changed from bottom to top
+  msg.style.top = "20%";
   msg.style.left = "50%";
   msg.style.transform = "translateX(-50%)";
   msg.style.background = "#007932";
@@ -118,6 +118,4 @@ function showCustomMessage(message) {
     msg.style.opacity = "0";
     setTimeout(() => msg.remove(), 500);
   }, 2500);
-}
-
 }
