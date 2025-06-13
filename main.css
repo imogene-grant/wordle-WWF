@@ -1,57 +1,24 @@
 /* WWF Wordle Styles */
 
 body {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    background-color: #f6fff6; /* light green background */
-    color: #000;
-    font-family: 'Helvetica Neue', 'Open Sans', sans-serif;
-    margin: 0;
-    padding: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f6fff6;
+  color: #000;
+  font-family: 'Helvetica Neue', 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 2rem;
 }
 
-/* Header */
-.heading {
-    display: flex;
-    justify-content: center;
-    font-family: 'Helvetica Neue', 'Open Sans', sans-serif;
-    color: #000;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-}
-
-/* Buttons */
-.button, input[type="button"], button {
-    padding: 12px 20px;
-    margin: 8px;
-    text-align: center;
-    font-size: 1rem;
-    border: none;
-    background-color: #007932; /* WWF forest green */
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.button:hover, input[type="button"]:hover, button:hover {
-    background-color: #005C27;
-}
-
-/* Game Grid */
-.wordle-container {
-    display: flex;
-    justify-content: center;
-    font-size: 2rem;
-    padding: 10px;
-}
 .game-wrapper {
   max-width: 800px;
   margin: 0 auto;
   padding: 40px 20px;
 }
 
+/* Header */
 .heading {
   text-align: center;
   margin-bottom: 10px;
@@ -62,6 +29,7 @@ body {
   font-weight: bold;
 }
 
+/* Intro Text */
 .intro-container {
   text-align: center;
   font-family: inherit;
@@ -76,90 +44,145 @@ body {
   margin-bottom: 10px;
 }
 
+/* Buttons */
+.button,
+input[type="button"],
+button {
+  padding: 12px 20px;
+  margin: 8px;
+  text-align: center;
+  font-size: 1rem;
+  border: none;
+  background-color: #007932;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:hover,
+input[type="button"]:hover,
+button:hover {
+  background-color: #005c27;
+}
+
+/* Game Grid */
 .wordle-container {
   display: flex;
   justify-content: center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 20px;
 }
 
-
 .wordle-wrapper {
-    display: block;
-    line-height: 50px;
+  display: inline-block;
+  transform-origin: top center;
 }
 
 .wordle-row {
-    clear: both;
-    margin-bottom: 8px;
+  clear: both;
+  margin-bottom: 8px;
 }
 
 .wordle-row > div {
-    padding: 10px;
-    width: 50px;
-    height: 50px;
-    border: 3px solid #000;
-    float: left;
-    margin: 0 4px;
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-transform: uppercase;
+  padding: 10px;
+  width: 50px;
+  height: 50px;
+  border: 3px solid #000;
+  float: left;
+  margin: 0 4px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 /* Tile Feedback Colours */
 .box-correct {
-    background-color: #007932; /* WWF green */
-    color: white;
-    border-color: #007932;
+  background-color: #007932;
+  color: white;
+  border-color: #007932;
 }
 
 .box-yellow {
-    background-color: #F5D200; /* WWF yellow */
-    color: black;
-    border-color: #F5D200;
+  background-color: #f5d200;
+  color: black;
+  border-color: #f5d200;
 }
 
 .box-incorrect {
-    background-color: #aaa;
-    color: white;
-    border-color: #aaa;
+  background-color: #aaa;
+  color: white;
+  border-color: #aaa;
 }
 
 /* Input Field */
 input[type="text"] {
-    margin-top: 1rem;
-    padding: 10px;
-    font-size: 1rem;
-    width: 220px;
-    max-width: 80%;
-    border: 2px solid #007932;
-    border-radius: 4px;
-    text-transform: uppercase;
-    text-align: center;
+  margin-top: 1rem;
+  padding: 10px;
+  font-size: 1rem;
+  width: 220px;
+  max-width: 80%;
+  border: 2px solid #007932;
+  border-radius: 4px;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 /* Navigation Buttons */
 .nav-btn-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
 /* Pages */
-.word-list, .how-to-play {
-    text-align: center;
-    font-size: 1rem;
-    color: #333;
+.word-list,
+.how-to-play {
+  text-align: center;
+  font-size: 1rem;
+  color: #333;
 }
 
 /* Result Message & Errors */
 .result {
-    font-size: 1.25rem;
-    margin-top: 1rem;
-    font-weight: bold;
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  font-weight: bold;
 }
 
 .error {
-    font-size: 0.9rem;
-    color: #DA1D52; /* WWF red */
-    margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #da1d52;
+  margin-top: 0.5rem;
+}
+
+/* Mobile Responsive Adjustments */
+@media screen and (max-width: 480px) {
+  .heading h1 {
+    font-size: 1.6rem;
+  }
+
+  .intro-container p {
+    font-size: 0.95rem;
+  }
+
+  .wordle-wrapper {
+    transform: scale(0.85);
+  }
+
+  .wordle-row > div {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .nav-btn-container {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 90%;
+    max-width: 300px;
+  }
 }
