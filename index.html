@@ -50,17 +50,17 @@
       <a href="how-to-play.html"><input type="button" class="button" value="How To Play" /></a>
     </div>
   </div>
-  <input
-    id="mobile-keyboard-trigger"
-    type="text"
-    inputmode="text"
-    autocomplete="off"
-    autocapitalize="none"
-    spellcheck="false"
-    autofocus
-    style="position: absolute; top: 0; left: 0; width: 1px; height: 1px; opacity: 0; z-index: 999;"
-  />
-
+ <input
+  id="mobile-keyboard-trigger"
+  type="text"
+  inputmode="text"
+  autocomplete="off"
+  autocapitalize="none"
+  spellcheck="false"
+  autofocus
+  style="position: absolute; top: 0; left: 0; width: 1px; height: 1px; opacity: 0; z-index: 999;"
+  onblur="setTimeout(() => this.focus(), 10);"
+/>
   <script>
     const mobileInput = document.getElementById('mobile-keyboard-trigger');
 
