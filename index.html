@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <!--Example HTML for wordle-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="A Custom wordle template">
@@ -15,65 +14,45 @@
 </head>
 
 <body>
-    <div class="heading">
-        <h1>WWF Conservation Word of the Day</h1>
-    </div>
-    <div class="intro-container">
-  <p>Every day, we publish a new five-letter word inspired by the natural world—from iconic species and unique ecosystems to the forces shaping our planet. It’s a small daily ritual to spark curiosity, deepen your connection with nature, and keep conservation front of mind.</p>
-  <p>Play today’s puzzle, come back tomorrow for a new one—and let your mind wander into the wild.</p>
-</div>
-    <div class="wordle-container" style="padding:15px">
-        <div class="wordle-wrapper">
-            <div class="wordle-row">
-                <div id="1_1"></div>
-                <div id="1_2"></div>
-                <div id="1_3"></div>
-                <div id="1_4"></div>
-                <div id="1_5"></div>
-            </div>
-            <div class="wordle-row">
-                <div id="2_1"></div>
-                <div id="2_2"></div>
-                <div id="2_3"></div>
-                <div id="2_4"></div>
-                <div id="2_5"></div>
-            </div>
-            <div class="wordle-row">
-                <div id="3_1"></div>
-                <div id="3_2"></div>
-                <div id="3_3"></div>
-                <div id="3_4"></div>
-                <div id="3_5"></div>
-            </div>
-            <div class="wordle-row">
-                <div id="4_1"></div>
-                <div id="4_2"></div>
-                <div id="4_3"></div>
-                <div id="4_4"></div>
-                <div id="4_5"></div>
-            </div>
-            <div class="wordle-row">
-                <div id="5_1"></div>
-                <div id="5_2"></div>
-                <div id="5_3"></div>
-                <div id="5_4"></div>
-                <div id="5_5"></div>
-            </div>
-            <div class="wordle-row">
-                <div id="6_1"></div>
-                <div id="6_2"></div>
-                <div id="6_3"></div>
-                <div id="6_4"></div>
-                <div id="6_5"></div>
+    <div class="game-wrapper">
+        <div class="heading">
+            <h1>WWF Conservation Word of the Day</h1>
+        </div>
+
+        <div class="intro-container">
+            <p>Every day, we publish a new five-letter word inspired by the natural world—from iconic species and unique ecosystems to the forces shaping our planet. It’s a small daily ritual to spark curiosity, deepen your connection with nature, and keep conservation front of mind.</p>
+            <p>Play today’s puzzle, come back tomorrow for a new one—and let your mind wander into the wild.</p>
+        </div>
+
+        <div class="wordle-container" style="padding:15px">
+            <div class="wordle-wrapper">
+                <div class="wordle-row">
+                    <div id="1_1"></div><div id="1_2"></div><div id="1_3"></div><div id="1_4"></div><div id="1_5"></div>
+                </div>
+                <div class="wordle-row">
+                    <div id="2_1"></div><div id="2_2"></div><div id="2_3"></div><div id="2_4"></div><div id="2_5"></div>
+                </div>
+                <div class="wordle-row">
+                    <div id="3_1"></div><div id="3_2"></div><div id="3_3"></div><div id="3_4"></div><div id="3_5"></div>
+                </div>
+                <div class="wordle-row">
+                    <div id="4_1"></div><div id="4_2"></div><div id="4_3"></div><div id="4_4"></div><div id="4_5"></div>
+                </div>
+                <div class="wordle-row">
+                    <div id="5_1"></div><div id="5_2"></div><div id="5_3"></div><div id="5_4"></div><div id="5_5"></div>
+                </div>
+                <div class="wordle-row">
+                    <div id="6_1"></div><div id="6_2"></div><div id="6_3"></div><div id="6_4"></div><div id="6_5"></div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="nav-btn-container">
-        <input type="button" class="button" value="Generate New Word" onclick="generateNewWord();"></input>
-        </a>
-        <a href="how-to-play.html">
-            <input type="button" class="button" value="How To Play"></input>
-        </a>
+
+        <div class="nav-btn-container">
+            <input type="button" class="button" value="Generate New Word" onclick="generateNewWord();">
+            <a href="how-to-play.html">
+                <input type="button" class="button" value="How To Play">
+            </a>
+        </div>
     </div>
 </body>
 
