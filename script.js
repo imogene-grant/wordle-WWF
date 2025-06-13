@@ -1,4 +1,3 @@
-//Example script
 const words = [
   "KOALA","BILBY","QUOLL","WOYLI","WOMBAT","OTTER","EAGLE","HERON","CRANE","SKINK",
   "TIGER","PANDA","LEMUR","SLOTH","ORCAS","SHARK","WHALE","DOLPH","SEALS","TROUT",
@@ -10,127 +9,100 @@ const words = [
   "RAINS","FIRES","FLOOD","SMOKE","HAZEY","FOGGY","WINDS","THAWS","MELTS","EMBER",
   "FLAME","BLAZE","DRIES","DROPS","DEEPS","FROTH","EBBED","SHOAL","DRIFT","BRACK",
   "MIRKY","ROCKY","EARTHY","GNARL","SANDS","GULLY","THRUM","NESTS","SHELL","LARKS",
-  "BEAKS","CHIRP","QUILL","VALUE","GUARD","FENCE","RESET","SHIFT","REUSE","RENEW",
-  "CYCLE","CIVIC","UNITY","PEACE","TRUST","ADAPT","CLEAN","BIOME","BIOTA","PLANET"
+  "BEAKS","CHIRP","QUILL"
 ];
 
-//Add custom words as an array
 let currentLine = 1;
 let won = false;
+let currentInput = [];
 let currentWord = words[Math.floor(Math.random() * words.length)].toLowerCase();
-let currentWordArray = currentWord.toLowerCase().split("");
+let currentWordArray = currentWord.split("");
+
 const generateNewWord = () => {
-  currentWord = words[Math.floor(Math.random() * words.length)];
+  currentWord = words[Math.floor(Math.random() * words.length)].toLowerCase();
   currentWordArray = currentWord.split("");
   currentInput = [];
   currentLine = 1;
   won = false;
-  for (let line = 1; line < 7; line++) {
-    for (let column = 0; column < 5; column++) {
-      const box = document.getElementById(line + "_" + (column + 1));
+  for (let line = 1; line <= 6; line++) {
+    for (let column = 1; column <= 5; column++) {
+      const box = document.getElementById(`${line}_${column}`);
       box.innerHTML = "";
-      box.setAttribute("class", "");
+      box.className = "";
     }
-  };
+  }
 };
-let currentInput = [];
-let keypressed = {};
-const processInput = (keyPressed) => {
-  let key = keyPressed.key.toLowerCase();
-  if (keyPressed.code == "Backspace") {
-    currentInput.pop();
-    addInput();
-  } else if (keyPressed.code == "Enter") {
-    enterInput();
-    revealAnswers();
-  } else if (currentInput.length < 5) {
-    checkValidChar(keyPressed);
-    addInput();
-  };
-};
-function addInput() {
-  if (won == false) {
-    updateUI(currentLine);
-  };
-};
-function checkValidChar(keyPressed) {
-  let key = keyPressed.code;
-  if (key == "KeyA" || key == "KeyB" || key == "KeyC" || key == "KeyD" || key == "KeyE" || key == "KeyF" || key == "KeyG" || key == "KeyH" || key == "KeyI" || key == "KeyJ" || key == "KeyK" || key == "KeyL" || key == "KeyM" || key == "KeyN" || key == "KeyO" || key == "KeyP" || key == "KeyQ" || key == "KeyR" || key == "KeyS" || key == "KeyT" || key == "KeyU" || key == "KeyV" || key == "KeyW" || key == "KeyX" || key == "KeyY" || key == "KeyZ") {
-    currentInput.push(keyPressed.key.toLowerCase());
-  };
-};
+
+function updateUI() {
+  for (let i = 1; i <= 5; i++) {
+    const box = document.getElementById(`${currentLine}_${i}`);
+    box.innerHTML = currentInput[i - 1] ? currentInput[i - 1].toUpperCase() : "";
+  }
+}
+
+function checkAnswers() {
+  for (let i = 0; i < 5; i++) {
+    const box = document.getElementById(`${currentLine}_${i + 1}`);
+    const letter = currentInput[i];
+    if (letter === currentWordArray[i]) {
+      box.className = "box-correct";
+    } else if (currentWordArray.includes(letter)) {
+      box.className = "box-yellow";
+    } else {
+      box.className = "box-incorrect";
+    }
+  }
+
+  if (currentInput.join("") === currentWord) {
+    alert("Correct!");
+    won = true;
+  } else if (currentLine === 6) {
+    alert(`The correct answer was "${currentWord.toUpperCase()}"`);
+  }
+}
+
 function enterInput() {
-  if (won == true) { return; };
-  if (currentInput.length == 5 && currentLine != 7) {
-    checkAnswers(currentLine);
-    currentLine += 1;
-    currentInput = [];
-  } else {
+  if (won || currentInput.length !== 5) {
     alert("Your word is not long enough!");
-  };
-};
-function revealAnswers() {
-  if (currentLine == 7 && won === false) {
-    alert("The correct answer was \"" + currentWord + "\"");
-  };
-};
-document.addEventListener("keydown", processInput, false);
-// Redirect mobile input into keypress handler
+    return;
+  }
+  checkAnswers();
+  currentLine++;
+  currentInput = [];
+}
+
+function handleKeyInput(key) {
+  if (won) return;
+
+  if (key === "Backspace") {
+    currentInput.pop();
+  } else if (key === "Enter") {
+    enterInput();
+  } else if (/^[a-zA-Z]$/.test(key) && currentInput.length < 5) {
+    currentInput.push(key.toLowerCase());
+  }
+  updateUI();
+}
+
+// DESKTOP
+window.addEventListener("keydown", (e) => {
+  handleKeyInput(e.key);
+});
+
+// MOBILE
 const mobileInput = document.getElementById("mobile-keyboard-trigger");
 if (mobileInput) {
   mobileInput.addEventListener("input", (e) => {
-    const char = e.target.value.slice(-1);
-    if (char) {
-      const fakeEvent = new KeyboardEvent("keydown", { key: char, code: "Key" + char.toUpperCase() });
-      document.dispatchEvent(fakeEvent);
-    }
+    const val = e.target.value.slice(-1);
     e.target.value = "";
+    if (val) handleKeyInput(val);
   });
 
-  // Auto-focus it on page load
   window.addEventListener("load", () => {
     mobileInput.focus();
   });
 
-  // Refocus it anytime the user taps the screen
   document.addEventListener("touchstart", () => {
     mobileInput.focus();
   });
 }
-
-function updateUI(currentLine) {
-  for (let clearBox = 1; clearBox < 6; clearBox++) {
-    let currentClearBox = document.getElementById(currentLine + "_" + clearBox);
-    currentClearBox.innerHTML = "";
-  };
-  for (let box = 1; box < currentInput.length + 1; box++) {
-    let currentBox = document.getElementById(currentLine + "_" + box);
-    currentBox.innerHTML = currentInput[box - 1].toUpperCase();
-  };
-};
-function checkAnswers(currentLine) {
-  for (let box = 1; box < 6; box++) {
-    let currentBox = document.getElementById(currentLine + "_" + box);
-    currentBox.setAttribute("class", "box-incorrect");
-    if (currentInput[box - 1] == currentWordArray[box - 1]) {
-      currentBox.setAttribute("class", "box-correct");
-    } else {
-      for (let arrayIndex = 0; arrayIndex < 5; arrayIndex++) {
-        if (currentInput[box - 1] == currentWordArray[arrayIndex]) {
-          currentBox.setAttribute("class", "box-yellow");
-        };
-      };
-    };
-    if (box == 5) {
-      let box1 = document.getElementById(currentLine + "_1").innerHTML.toLowerCase();
-      let box2 = document.getElementById(currentLine + "_2").innerHTML.toLowerCase();
-      let box3 = document.getElementById(currentLine + "_3").innerHTML.toLowerCase();
-      let box4 = document.getElementById(currentLine + "_4").innerHTML.toLowerCase();
-      let box5 = document.getElementById(currentLine + "_5").innerHTML.toLowerCase();
-      if (box1 === currentWordArray[0] && box2 === currentWordArray[1] && box3 === currentWordArray[2] && box4 === currentWordArray[3] && box5 === currentWordArray[4]) {
-        alert("Correct!");
-        won = true;
-      };
-    };
-  };
-};
