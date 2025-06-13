@@ -9,7 +9,8 @@ const words = [
   "RAINS","FIRES","FLOOD","SMOKE","HAZEY","FOGGY","WINDS","THAWS","MELTS","EMBER",
   "FLAME","BLAZE","DRIES","DROPS","DEEPS","FROTH","EBBED","SHOAL","DRIFT","BRACK",
   "MIRKY","ROCKY","EARTHY","GNARL","SANDS","GULLY","THRUM","NESTS","SHELL","LARKS",
-  "BEAKS","CHIRP","QUILL"
+  "BEAKS","CHIRP","QUILL","VALUE","GUARD","FENCE","RESET","SHIFT","REUSE","RENEW",
+  "CYCLE","CIVIC","UNITY","PEACE","TRUST","ADAPT","CLEAN","BIOME","BIOTA","PLANET"
 ];
 
 let currentLine = 1;
@@ -18,32 +19,38 @@ let currentInput = [];
 let currentWord = words[Math.floor(Math.random() * words.length)].toLowerCase();
 let currentWordArray = currentWord.split("");
 
-const generateNewWord = () => {
+// Reset the game with a new word
+function generateNewWord() {
   currentWord = words[Math.floor(Math.random() * words.length)].toLowerCase();
   currentWordArray = currentWord.split("");
-  currentInput = [];
   currentLine = 1;
+  currentInput = [];
   won = false;
-  for (let line = 1; line <= 6; line++) {
-    for (let column = 1; column <= 5; column++) {
-      const box = document.getElementById(`${line}_${column}`);
-      box.innerHTML = "";
-      box.className = "";
+  for (let r = 1; r <= 6; r++) {
+    for (let c = 1; c <= 5; c++) {
+      const box = document.getElementById(`${r}_${c}`);
+      if (box) {
+        box.textContent = "";
+        box.className = "";
+      }
     }
-  }
-};
-
-function updateUI() {
-  for (let i = 1; i <= 5; i++) {
-    const box = document.getElementById(`${currentLine}_${i}`);
-    box.innerHTML = currentInput[i - 1] ? currentInput[i - 1].toUpperCase() : "";
   }
 }
 
+// Update the current row in the grid
+function updateUI() {
+  for (let i = 1; i <= 5; i++) {
+    const box = document.getElementById(`${currentLine}_${i}`);
+    box.textContent = currentInput[i - 1] ? currentInput[i - 1].toUpperCase() : "";
+  }
+}
+
+// Check the user's guess
 function checkAnswers() {
-  for (let i = 0; i < 5; i++) {
+  currentInput.forEach((letter, i) => {
     const box = document.getElementById(`${currentLine}_${i + 1}`);
-    const letter = currentInput[i];
+    if (!box) return;
+
     if (letter === currentWordArray[i]) {
       box.className = "box-correct";
     } else if (currentWordArray.includes(letter)) {
@@ -51,7 +58,7 @@ function checkAnswers() {
     } else {
       box.className = "box-incorrect";
     }
-  }
+  });
 
   if (currentInput.join("") === currentWord) {
     alert("Correct!");
@@ -61,48 +68,45 @@ function checkAnswers() {
   }
 }
 
-function enterInput() {
-  if (won || currentInput.length !== 5) {
-    alert("Your word is not long enough!");
-    return;
-  }
-  checkAnswers();
-  currentLine++;
-  currentInput = [];
-}
-
-function handleKeyInput(key) {
+// Handle key input
+function handleKey(key) {
   if (won) return;
 
   if (key === "Backspace") {
     currentInput.pop();
+    updateUI();
   } else if (key === "Enter") {
-    enterInput();
+    if (currentInput.length === 5) {
+      checkAnswers();
+      currentLine++;
+      currentInput = [];
+      updateUI();
+    } else {
+      alert("Your word is not long enough!");
+    }
   } else if (/^[a-zA-Z]$/.test(key) && currentInput.length < 5) {
     currentInput.push(key.toLowerCase());
+    updateUI();
   }
-  updateUI();
 }
 
-// DESKTOP
+// Desktop keyboard support
 window.addEventListener("keydown", (e) => {
-  handleKeyInput(e.key);
+  handleKey(e.key);
 });
 
-// MOBILE
+// Mobile hidden input support
 const mobileInput = document.getElementById("mobile-keyboard-trigger");
 if (mobileInput) {
   mobileInput.addEventListener("input", (e) => {
     const val = e.target.value.slice(-1);
     e.target.value = "";
-    if (val) handleKeyInput(val);
+    if (val) handleKey(val);
   });
 
-  window.addEventListener("load", () => {
-    mobileInput.focus();
-  });
+  // Autofocus on load
+  window.addEventListener("load", () => mobileInput.focus());
 
-  document.addEventListener("touchstart", () => {
-    mobileInput.focus();
-  });
+  // Refocus on tap
+  document.addEventListener("touchstart", () => mobileInput.focus());
 }
