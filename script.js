@@ -19,12 +19,11 @@ let currentInput = [];
 let currentWord = words[Math.floor(Math.random() * words.length)].toLowerCase();
 let currentWordArray = currentWord.split("");
 
-// Reset the game with a new word
 function generateNewWord() {
   currentWord = words[Math.floor(Math.random() * words.length)].toLowerCase();
   currentWordArray = currentWord.split("");
-  currentLine = 1;
   currentInput = [];
+  currentLine = 1;
   won = false;
   for (let r = 1; r <= 6; r++) {
     for (let c = 1; c <= 5; c++) {
@@ -37,7 +36,6 @@ function generateNewWord() {
   }
 }
 
-// Update the current row in the grid
 function updateUI() {
   for (let i = 1; i <= 5; i++) {
     const box = document.getElementById(`${currentLine}_${i}`);
@@ -45,12 +43,10 @@ function updateUI() {
   }
 }
 
-// Check the user's guess
 function checkAnswers() {
   currentInput.forEach((letter, i) => {
     const box = document.getElementById(`${currentLine}_${i + 1}`);
     if (!box) return;
-
     if (letter === currentWordArray[i]) {
       box.className = "box-correct";
     } else if (currentWordArray.includes(letter)) {
@@ -68,10 +64,8 @@ function checkAnswers() {
   }
 }
 
-// Handle key input
 function handleKey(key) {
   if (won) return;
-
   if (key === "Backspace") {
     currentInput.pop();
     updateUI();
@@ -90,23 +84,6 @@ function handleKey(key) {
   }
 }
 
-// Desktop keyboard support
 window.addEventListener("keydown", (e) => {
   handleKey(e.key);
 });
-
-// Mobile hidden input support
-const mobileInput = document.getElementById("mobile-keyboard-trigger");
-if (mobileInput) {
-  mobileInput.addEventListener("input", (e) => {
-    const val = e.target.value.slice(-1);
-    e.target.value = "";
-    if (val) handleKey(val);
-  });
-
-  // Autofocus on load
-  window.addEventListener("load", () => mobileInput.focus());
-
-  // Refocus on tap
-  document.addEventListener("touchstart", () => mobileInput.focus());
-}
