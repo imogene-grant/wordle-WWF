@@ -12,6 +12,7 @@ body {
   padding: 2rem;
 }
 
+/* Layout Container */
 .game-wrapper {
   max-width: 800px;
   margin: 0 auto;
@@ -44,28 +45,7 @@ body {
   margin-bottom: 10px;
 }
 
-/* Buttons */
-.button,
-input[type="button"],
-button {
-  padding: 12px 20px;
-  margin: 8px;
-  text-align: center;
-  font-size: 1rem;
-  border: none;
-  background-color: #007932;
-  color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.button:hover,
-input[type="button"]:hover,
-button:hover {
-  background-color: #005c27;
-}
-
-/* Game Grid */
+/* Game Grid Container */
 .wordle-container {
   display: flex;
   justify-content: center;
@@ -74,27 +54,30 @@ button:hover {
   padding-bottom: 20px;
 }
 
+/* Grid Layout */
 .wordle-wrapper {
-  display: inline-block;
-  transform-origin: top center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 
 .wordle-row {
-  clear: both;
-  margin-bottom: 8px;
+  display: flex;
+  gap: 8px;
 }
 
 .wordle-row > div {
-  padding: 10px;
   width: 50px;
   height: 50px;
   border: 3px solid #000;
-  float: left;
-  margin: 0 4px;
   text-align: center;
   font-size: 1.5rem;
   font-weight: bold;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Tile Feedback Colours */
@@ -116,7 +99,7 @@ button:hover {
   border-color: #aaa;
 }
 
-/* Input Field */
+/* Input Field (if used) */
 input[type="text"] {
   margin-top: 1rem;
   padding: 10px;
@@ -129,11 +112,33 @@ input[type="text"] {
   text-align: center;
 }
 
+/* Buttons */
+.button,
+input[type="button"],
+button {
+  padding: 12px 20px;
+  margin: 8px;
+  text-align: center;
+  font-size: 1rem;
+  border: none;
+  background-color: #007932;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:hover,
+input[type="button"]:hover,
+button:hover {
+  background-color: #005c27;
+}
+
 /* Navigation Buttons */
 .nav-btn-container {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
+  flex-wrap: wrap;
 }
 
 /* Pages */
@@ -157,7 +162,7 @@ input[type="text"] {
   margin-top: 0.5rem;
 }
 
-/* Mobile Responsive Adjustments */
+/* Mobile Responsive */
 @media screen and (max-width: 480px) {
   .heading h1 {
     font-size: 1.6rem;
@@ -165,10 +170,6 @@ input[type="text"] {
 
   .intro-container p {
     font-size: 0.95rem;
-  }
-
-  .wordle-wrapper {
-    transform: scale(0.85);
   }
 
   .wordle-row > div {
@@ -179,6 +180,7 @@ input[type="text"] {
 
   .nav-btn-container {
     flex-direction: column;
+    align-items: center;
   }
 
   .button {
