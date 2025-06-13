@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WWF Conservation Word of the Day</title>
+  <link rel="stylesheet" href="main.css" />
+  <script defer src="script.js"></script>
+</head>
 <body>
   <div class="game-wrapper">
     <div class="heading">
@@ -5,8 +14,12 @@
     </div>
 
     <div class="intro-container">
-      <p>Every day, we publish a new five-letter word inspired by the natural world—from iconic species and unique ecosystems to the forces shaping our planet. It’s a small daily ritual to spark curiosity, deepen your connection with nature, and keep conservation front of mind.</p>
-      <p>Play today’s puzzle, come back tomorrow for a new one—and let your mind wander into the wild.</p>
+      <p>
+        Every day, we publish a new five-letter word inspired by the natural world—from iconic species and unique ecosystems to the forces shaping our planet. It’s a small daily ritual to spark curiosity, deepen your connection with nature, and keep conservation front of mind.
+      </p>
+      <p>
+        Play today’s puzzle, come back tomorrow for a new one—and let your mind wander into the wild.
+      </p>
     </div>
 
     <div class="wordle-container">
@@ -21,14 +34,9 @@
     </div>
 
     <div class="nav-btn-container">
-      <input type="button" class="button" value="Generate New Word" onclick="generateNewWord();">
-      <a href="how-to-play.html"><input type="button" class="button" value="How To Play"></a>
+      <input type="button" class="button" value="Generate New Word" onclick="generateNewWord();" />
+      <a href="how-to-play.html"><input type="button" class="button" value="How To Play" /></a>
     </div>
   </div>
-
-  <!-- Hidden mobile keyboard input -->
-  <input id="mobile-keyboard-trigger" type="text"
-    inputmode="text" autocomplete="off" autocapitalize="none"
-    spellcheck="false" autofocus
-    style="opacity:0; position:absolute; bottom:0; left:0; width:1px; height:1px;">
 </body>
+</html>
