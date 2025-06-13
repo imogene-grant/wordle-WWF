@@ -38,7 +38,7 @@
       <a href="how-to-play.html"><input type="button" class="button" value="How To Play" /></a>
     </div>
   </div>
-  <input
+ <input
   id="mobile-keyboard-trigger"
   type="text"
   inputmode="text"
@@ -46,7 +46,13 @@
   autocapitalize="none"
   spellcheck="false"
   autofocus
-  style="opacity:0; position:absolute; bottom:0; left:0; width:1px; height:1px;"
+  style="position: absolute; top: 0; left: 0; width: 1px; height: 1px; opacity: 0; z-index: 999;"
 />
+  <div id="tap-to-type" style="
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 998;
+  background: transparent;
+"></div>
 </body>
 </html>
