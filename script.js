@@ -1,5 +1,6 @@
 //Example script
-const words = ["hello", "world", "words"]; //Add custom words as an array
+const words = ["WHALE", "TIGER", "EARTH", "CORAL", "KOALA", "OTTER",
+  "TREES", "SHARK", "LEAF", "CLEAN", "WATER", "REEFS"]; //Add custom words as an array
 let currentLine = 1;
 let won = false;
 let currentWord = words[Math.floor(Math.random() * words.length)];
