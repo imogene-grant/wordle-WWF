@@ -1,24 +1,101 @@
-<h1>How To Play</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>How To Play - WWF Wordle</title>
+  <link rel="stylesheet" href="main.css">
+  <style>
+    body {
+      background-color: #f6fff6;
+      font-family: 'Helvetica Neue', 'Open Sans', sans-serif;
+      color: #1a1a1a;
+      padding: 2rem;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    ul {
+      text-align: left;
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .nav-btn-container {
+      display: flex;
+      justify-content: center;
+    }
+    .button {
+      background-color: #007932;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #005C27;
+    }
+    a {
+      color: #007932;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
 
-<h2>Welcome to WWF Conservation Word of the Day</h2>
+    .tile {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-weight: bold;
+      color: #000;
+    }
+    .tile-grey {
+      background-color: #aaa;
+      color: #fff;
+    }
+    .tile-yellow {
+      background-color: #F5D200;
+    }
+    .tile-green {
+      background-color: #007932;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>How To Play</h1>
+  <h2>Welcome to WWF Conservation Word of the Day</h2>
 
-<ul>
-  <li>Each day, there’s a new conservation-themed 5-letter word to guess.</li>
-  <li>You have 6 chances to figure it out.</li>
-  <li>As you guess, the tiles will give you hints:</li>
-  <li>A <span style="color: gray;"><strong>gray</strong></span> tile means the letter isn’t in the word at all.</li>
-  <li>A <span style="color: #F5D200;"><strong>yellow</strong></span> tile means the letter is in the word, but not in the right spot.</li>
-  <li>A <span style="color: #007932;"><strong>green</strong></span> tile means the letter is in the correct spot.</li>
-  <li>Every word is related to wildlife, climate, or the natural world—just like WWF’s mission.</li>
-  <li>You can only use real 5-letter words—no shortcuts!</li>
-  <li>And yes, the word changes every day. Come back tomorrow for a new one 🌱</li>
-</ul>
+  <ul>
+    <li>Each day, there’s a new conservation-themed 5-letter word to guess.</li>
+    <li>You have 6 chances to figure it out.</li>
+    <li>As you guess, the tiles will give you hints:</li>
+    <li>A <span class="tile tile-grey">gray</span> tile means the letter isn’t in the word at all.</li>
+    <li>A <span class="tile tile-yellow">yellow</span> tile means the letter is in the word, but not in the right spot.</li>
+    <li>A <span class="tile tile-green">green</span> tile means the letter is in the correct spot.</li>
+    <li>Every word is related to wildlife, climate, or the natural world—just like WWF’s mission.</li>
+    <li>You can only use real 5-letter words—no shortcuts!</li>
+    <li>And yes, the word changes every day. Come back tomorrow for a new one 🌱</li>
+  </ul>
 
-<p><strong>Tip:</strong> After clicking “Generate New Word,” tap anywhere else on the page to continue typing.</p>
-<p>Good luck, and thank you for supporting conservation in a fun way!</p>
+  <p><strong>Tip:</strong> After clicking “Generate New Word,” tap anywhere else on the page to continue typing.</p>
+  <p>Good luck, and thank you for supporting conservation in a fun way!</p>
 
-<div class="nav-btn-container">
-  <a href="index.html">
-    <input type="button" class="button" value="Return">
-  </a>
-</div>
+  <div class="nav-btn-container">
+    <a href="index.html">
+      <input type="button" class="button" value="Return">
+    </a>
+  </div>
+</body>
+</html>
