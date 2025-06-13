@@ -188,6 +188,7 @@ button:hover {
     max-width: 300px;
   }
 }
+
 .intro-popup {
   position: fixed;
   top: 0;
@@ -201,6 +202,7 @@ button:hover {
   justify-content: center;
   padding: 2rem;
   box-sizing: border-box;
+  pointer-events: auto; /* ← This is the fix */
 }
 
 .intro-popup-content {
@@ -222,4 +224,3 @@ button:hover {
   border-radius: 5px;
   cursor: pointer;
 }
-
