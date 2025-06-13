@@ -1,6 +1,20 @@
 //Example script
-const words = ["WHALE", "TIGER", "EARTH", "CORAL", "KOALA", "OTTER",
-  "TREES", "SHARK", "LEAF", "CLEAN", "WATER", "REEFS"]; //Add custom words as an array
+const words = [
+  "KOALA","BILBY","QUOLL","WOYLI","WOMBAT","OTTER","EAGLE","HERON","CRANE","SKINK",
+  "TIGER","PANDA","LEMUR","SLOTH","ORCAS","SHARK","WHALE","DOLPH","SEALS","TROUT",
+  "CORAL","REEFS","DELTA","SWAMP","CREEK","GLADE","GROVE","MARSH","RIDGE","DUNES",
+  "ISLES","CAVES","CLIFF","BEACH","WOODS","PARKS","TRAIL","FOREST","TREES","BUSHY",
+  "LEAFY","SCRUB","GRASS","VINES","FERNS","FLORA","FAUNA","MOSSY","MULGA","LOAMY",
+  "REEDS","FROND","PALMS","ALGAE","LOTUS","KELPS","FUNGI","CACTI","THORN","MULCH",
+  "PLANT","BLOOM","GREEN","EARTH","WATER","OCEAN","TIDES","WAVES","CLOUD","STORM",
+  "RAINS","FIRES","FLOOD","SMOKE","HAZEY","FOGGY","WINDS","THAWS","MELTS","EMBER",
+  "FLAME","BLAZE","DRIES","DROPS","DEEPS","FROTH","EBBED","SHOAL","DRIFT","BRACK",
+  "MIRKY","ROCKY","EARTHY","GNARL","SANDS","GULLY","THRUM","NESTS","SHELL","LARKS",
+  "BEAKS","CHIRP","QUILL","VALUE","GUARD","FENCE","RESET","SHIFT","REUSE","RENEW",
+  "CYCLE","CIVIC","UNITY","PEACE","TRUST","ADAPT","CLEAN","BIOME","BIOTA","PLANET"
+];
+
+//Add custom words as an array
 let currentLine = 1;
 let won = false;
 let currentWord = words[Math.floor(Math.random() * words.length)].toLowerCase();
