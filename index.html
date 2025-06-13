@@ -27,10 +27,6 @@
 
     <div class="wordle-container">
       <!-- Tap layer only covers the word grid -->
-      <div
-        id="mobile-tap-layer"
-        onclick="document.getElementById('mobile-keyboard-trigger').focus();"
-      ></div>
 
       <div class="wordle-wrapper">
         <div class="wordle-row">
@@ -105,5 +101,13 @@
       document.getElementById('intro-popup').style.display = 'none';
     });
   </script>
+  <script>
+  document.querySelector('.wordle-wrapper').addEventListener('touchstart', () => {
+    document.getElementById('mobile-keyboard-trigger').focus();
+  });
+  document.querySelector('.wordle-wrapper').addEventListener('mousedown', () => {
+    document.getElementById('mobile-keyboard-trigger').focus();
+  });
+</script>
 </body>
 </html>
