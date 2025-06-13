@@ -50,29 +50,40 @@
       <a href="how-to-play.html"><input type="button" class="button" value="How To Play" /></a>
     </div>
   </div>
- <input
-  id="mobile-keyboard-trigger"
-  type="text"
-  inputmode="text"
-  autocomplete="off"
-  autocapitalize="none"
-  spellcheck="false"
-  autofocus
-  style="position: absolute; top: 0; left: 0; width: 1px; height: 1px; opacity: 0; z-index: 999;"
-/>
-  <!-- Removed blocking overlay -->
-  <script>
-  const mobileInput = document.getElementById('mobile-keyboard-trigger');
+  <input
+    id="mobile-keyboard-trigger"
+    type="text"
+    inputmode="text"
+    autocomplete="off"
+    autocapitalize="none"
+    spellcheck="false"
+    autofocus
+    style="position: absolute; top: 0; left: 0; width: 1px; height: 1px; opacity: 0; z-index: 999;"
+  />
 
-  document.querySelectorAll('.clickable').forEach(tile => {
-    tile.addEventListener('touchstart', () => {
-      mobileInput.focus();
+  <script>
+    const mobileInput = document.getElementById('mobile-keyboard-trigger');
+
+    document.querySelectorAll('.clickable').forEach(tile => {
+      tile.addEventListener('touchstart', () => {
+        setTimeout(() => mobileInput.focus(), 10);
+      });
+      tile.addEventListener('click', () => {
+        setTimeout(() => mobileInput.focus(), 10);
+      });
     });
-    tile.addEventListener('click', () => {
-      mobileInput.focus();
+
+    document.addEventListener('keydown', (e) => {
+      if (e.code === "Enter") {
+        setTimeout(() => mobileInput.focus(), 10);
+      }
     });
-  });
-</script>
+
+    document.addEventListener('touchend', () => {
+      setTimeout(() => mobileInput.focus(), 10);
+    });
+  </script>
 
 </body>
 </html>
+
