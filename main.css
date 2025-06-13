@@ -224,3 +224,26 @@ button:hover {
   border-radius: 5px;
   cursor: pointer;
 }
+/* Tap Layer — restricted to just the grid */
+#mobile-tap-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  background: transparent;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.wordle-wrapper {
+  position: relative;
+  z-index: 3;
+}
+
+#mobile-tap-layer {
+  height: 348px; /* ~6 rows × 50px + 5 × 8px gap */
+  top: 0; 
+  pointer-events: auto;
+}
+
