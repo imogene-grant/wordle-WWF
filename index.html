@@ -77,15 +77,21 @@
   <script>
     const mobileInput = document.getElementById('mobile-keyboard-trigger');
 
-    document.querySelectorAll('.clickable').forEach(tile => {
-      tile.addEventListener('touchstart', () => {
-        setTimeout(() => mobileInput.focus(), 10);
-      });
-      tile.addEventListener('click', () => {
-        setTimeout(() => mobileInput.focus(), 10);
-      });
-    });
+   document.querySelectorAll('.clickable').forEach(tile => {
+  tile.addEventListener('touchstart', () => {
+    setTimeout(() => {
+      mobileInput.focus();
+      tile.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 10);
+  });
 
+  tile.addEventListener('click', () => {
+    setTimeout(() => {
+      mobileInput.focus();
+      tile.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 10);
+  });
+});
     document.addEventListener('keydown', (e) => {
       if (e.code === "Enter") {
         setTimeout(() => mobileInput.focus(), 10);
