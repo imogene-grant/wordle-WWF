@@ -75,6 +75,29 @@ function revealAnswers() {
   };
 };
 document.addEventListener("keydown", processInput, false);
+// Redirect mobile input into keypress handler
+const mobileInput = document.getElementById("mobile-keyboard-trigger");
+if (mobileInput) {
+  mobileInput.addEventListener("input", (e) => {
+    const char = e.target.value.slice(-1);
+    if (char) {
+      const fakeEvent = new KeyboardEvent("keydown", { key: char, code: "Key" + char.toUpperCase() });
+      document.dispatchEvent(fakeEvent);
+    }
+    e.target.value = "";
+  });
+
+  // Auto-focus it on page load
+  window.addEventListener("load", () => {
+    mobileInput.focus();
+  });
+
+  // Refocus it anytime the user taps the screen
+  document.addEventListener("touchstart", () => {
+    mobileInput.focus();
+  });
+}
+
 function updateUI(currentLine) {
   for (let clearBox = 1; clearBox < 6; clearBox++) {
     let currentClearBox = document.getElementById(currentLine + "_" + clearBox);
