@@ -66,5 +66,18 @@
   z-index: 998;
   background: transparent;
 "></div>
+  <script>
+  const mobileInput = document.getElementById('mobile-keyboard-trigger');
+
+  document.querySelectorAll('.clickable').forEach(tile => {
+    tile.addEventListener('touchstart', () => {
+      mobileInput.focus();
+    });
+    tile.addEventListener('click', () => {
+      mobileInput.focus();
+    });
+  });
+</script>
+
 </body>
 </html>
