@@ -3,8 +3,8 @@ const words = ["WHALE", "TIGER", "EARTH", "CORAL", "KOALA", "OTTER",
   "TREES", "SHARK", "LEAF", "CLEAN", "WATER", "REEFS"]; //Add custom words as an array
 let currentLine = 1;
 let won = false;
-let currentWord = words[Math.floor(Math.random() * words.length)];
-let currentWordArray = currentWord.split("");
+let currentWord = words[Math.floor(Math.random() * words.length)].toLowerCase();
+let currentWordArray = currentWord.toLowerCase().split("");
 const generateNewWord = () => {
   currentWord = words[Math.floor(Math.random() * words.length)];
   currentWordArray = currentWord.split("");
