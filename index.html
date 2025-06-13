@@ -8,6 +8,19 @@
   <script defer src="script.js"></script>
 </head>
 <body>
+  <div
+  id="mobile-tap-layer"
+  onclick="document.getElementById('mobile-keyboard-trigger').focus();"
+  style="
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: transparent;
+  "
+></div>
   <div class="game-wrapper">
     <div class="heading">
       <h1>WWF Conservation Word of the Day</h1>
@@ -83,19 +96,6 @@
       setTimeout(() => mobileInput.focus(), 10);
     });
   </script>
-<div
-  id="mobile-tap-layer"
-  onclick="document.getElementById('mobile-keyboard-trigger').focus();"
-  style="
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    background: transparent;
-  "
-></div>
 
 </body>
 </html>
