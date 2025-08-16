@@ -47,7 +47,7 @@ body {
 
 /* Game Grid Container */
 .wordle-container {
-  position: relative; /* Ensure tap layer positions correctly */
+  position: relative;
   display: flex;
   justify-content: center;
   overflow-x: auto;
@@ -204,7 +204,7 @@ button:hover {
   }
 
   #mobile-tap-layer {
-    height: calc(6 * 40px + 5 * 8px); /* Adjust for smaller tile size */
+    height: calc(6 * 40px + 5 * 8px); /* Adjust height for smaller tiles */
   }
 }
 
@@ -231,7 +231,7 @@ button:hover {
   padding: 2rem;
   border-radius: 10px;
   text-align: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .intro-popup .button {
