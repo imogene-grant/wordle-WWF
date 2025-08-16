@@ -16,7 +16,7 @@
     <div id="intro-popup" class="intro-popup">
       <div class="intro-popup-content">
         <p>
-          Every day, we publish a new five-letter word inspired by the natural world—from iconic species and unique ecosystems to the forces shaping our planet.
+          Every day, we publish a new six-letter word inspired by the natural world—from iconic species and unique ecosystems to the forces shaping our planet.
         </p>
         <p>
           It’s a small daily ritual to spark curiosity, deepen your connection with nature, and keep conservation front of mind.
@@ -26,26 +26,31 @@
     </div>
 
     <div class="wordle-container">
-      <!-- Tap layer only covers the word grid -->
+      <!-- Tap layer only over grid -->
+      <div
+        id="mobile-tap-layer"
+        onclick="document.getElementById('mobile-keyboard-trigger').focus();"
+      ></div>
 
       <div class="wordle-wrapper">
+        <!-- 6 rows of 6 tiles each -->
         <div class="wordle-row">
-          <div id="1_1" class="clickable"></div><div id="1_2" class="clickable"></div><div id="1_3" class="clickable"></div><div id="1_4" class="clickable"></div><div id="1_5" class="clickable"></div>
+          <div id="1_1" class="clickable"></div><div id="1_2" class="clickable"></div><div id="1_3" class="clickable"></div><div id="1_4" class="clickable"></div><div id="1_5" class="clickable"></div><div id="1_6" class="clickable"></div>
         </div>
         <div class="wordle-row">
-          <div id="2_1" class="clickable"></div><div id="2_2" class="clickable"></div><div id="2_3" class="clickable"></div><div id="2_4" class="clickable"></div><div id="2_5" class="clickable"></div>
+          <div id="2_1" class="clickable"></div><div id="2_2" class="clickable"></div><div id="2_3" class="clickable"></div><div id="2_4" class="clickable"></div><div id="2_5" class="clickable"></div><div id="2_6" class="clickable"></div>
         </div>
         <div class="wordle-row">
-          <div id="3_1" class="clickable"></div><div id="3_2" class="clickable"></div><div id="3_3" class="clickable"></div><div id="3_4" class="clickable"></div><div id="3_5" class="clickable"></div>
+          <div id="3_1" class="clickable"></div><div id="3_2" class="clickable"></div><div id="3_3" class="clickable"></div><div id="3_4" class="clickable"></div><div id="3_5" class="clickable"></div><div id="3_6" class="clickable"></div>
         </div>
         <div class="wordle-row">
-          <div id="4_1" class="clickable"></div><div id="4_2" class="clickable"></div><div id="4_3" class="clickable"></div><div id="4_4" class="clickable"></div><div id="4_5" class="clickable"></div>
+          <div id="4_1" class="clickable"></div><div id="4_2" class="clickable"></div><div id="4_3" class="clickable"></div><div id="4_4" class="clickable"></div><div id="4_5" class="clickable"></div><div id="4_6" class="clickable"></div>
         </div>
         <div class="wordle-row">
-          <div id="5_1" class="clickable"></div><div id="5_2" class="clickable"></div><div id="5_3" class="clickable"></div><div id="5_4" class="clickable"></div><div id="5_5" class="clickable"></div>
+          <div id="5_1" class="clickable"></div><div id="5_2" class="clickable"></div><div id="5_3" class="clickable"></div><div id="5_4" class="clickable"></div><div id="5_5" class="clickable"></div><div id="5_6" class="clickable"></div>
         </div>
         <div class="wordle-row">
-          <div id="6_1" class="clickable"></div><div id="6_2" class="clickable"></div><div id="6_3" class="clickable"></div><div id="6_4" class="clickable"></div><div id="6_5" class="clickable"></div>
+          <div id="6_1" class="clickable"></div><div id="6_2" class="clickable"></div><div id="6_3" class="clickable"></div><div id="6_4" class="clickable"></div><div id="6_5" class="clickable"></div><div id="6_6" class="clickable"></div>
         </div>
       </div>
     </div>
@@ -56,6 +61,7 @@
     </div>
   </div>
 
+  <!-- Hidden input for mobile keyboard triggering -->
   <input
     id="mobile-keyboard-trigger"
     type="text"
@@ -93,21 +99,9 @@
       }
     });
 
-    document.addEventListener('touchend', () => {
-      setTimeout(() => mobileInput.focus(), 10);
-    });
-
     document.getElementById('close-intro').addEventListener('click', () => {
       document.getElementById('intro-popup').style.display = 'none';
     });
   </script>
-  <script>
-  document.querySelector('.wordle-wrapper').addEventListener('touchstart', () => {
-    document.getElementById('mobile-keyboard-trigger').focus();
-  });
-  document.querySelector('.wordle-wrapper').addEventListener('mousedown', () => {
-    document.getElementById('mobile-keyboard-trigger').focus();
-  });
-</script>
 </body>
 </html>
